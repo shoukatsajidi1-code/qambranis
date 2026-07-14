@@ -47,12 +47,14 @@ export default function Home(){
   const [checkout,setCheckout]=useState(false);
   const [payment,setPayment]=useState('Bank Transfer');
   const [form,setForm]=useState({name:'',email:'',phone:'',country:'Pakistan',address:'',note:''});
+  const [showAll,setShowAll]=useState(false);
 
   const shown=useMemo(()=>products.filter(p=>{
     const f=filter==='All'||p.tone.toLowerCase().includes(filter.toLowerCase());
     const q=(p.name+' '+p.tone).toLowerCase().includes(query.toLowerCase());
     return f&&q;
   }),[filter,query]);
+  const visibleProducts=(query||filter!=='All'||showAll)?shown:shown.slice(0,6);
   const total=cart.reduce((s,x)=>s+x.qty*PRICE,0);
   const count=cart.reduce((s,x)=>s+x.qty,0);
 
@@ -105,12 +107,13 @@ export default function Home(){
         <div className="chips">{['All','Black','Blue','Green','Ivory','Purple'].map(x=><button key={x} className={filter===x?'active':''} onClick={()=>setFilter(x)}>{x}</button>)}</div>
       </div>
       <div className="grid">
-        {shown.map(p=><article key={p.slug} className="card">
+        {visibleProducts.map(p=><article key={p.slug} className="card">
           <button className="imageWrap" onClick={()=>{setSelected(p);setActiveImage(1)}}><Image src={`/images/products/${p.slug}-1.webp`} alt={p.name} fill sizes="(max-width:760px) 100vw,50vw" className="cover"/></button>
-          <div className="cardText"><div><h3>{p.name}</h3><p>{p.tone}</p></div><span>{money(PRICE)}</span></div>
-          <div className="cardActions"><button onClick={()=>{setSelected(p);setActiveImage(1)}}>View details</button><button onClick={()=>add(p)}>Add to bag</button></div>
+          <div className="cardText"><div><span className="productLabel">Handcrafted to order</span><h3>{p.name}</h3><p>{p.tone}</p></div><span className="cardPrice">{money(PRICE)}</span></div>
+          <div className="cardActions"><button className="primaryAction" onClick={()=>{setSelected(p);setActiveImage(1)}}>View details</button><button onClick={()=>add(p)}>Add to bag</button></div>
         </article>)}
       </div>
+      {!query&&filter==='All'&&shown.length>6&&<div className="collectionMore"><button className="outlineButton" onClick={()=>setShowAll(!showAll)}>{showAll?'Show featured pieces':'View full collection'}</button><span>{showAll?'12 handcrafted pieces':'Showing 6 selected pieces'}</span></div>}
     </section>
 
     <section id="craft" className="split"><div className="craftImage"><Image src="/images/craft.jpg" alt="Hand embroidery by a Qambranis artisan" fill sizes="(max-width:900px) 100vw,60vw" className="cover"/></div><div className="splitText"><p>Our Craft</p><h2>Every stitch<br/>placed by hand.</h2><ul><li>Interior Sindh</li><li>Traditional embroidery</li><li>Customisation available</li><li>No mass production</li></ul></div></section>
@@ -125,7 +128,7 @@ export default function Home(){
 
     <section id="contact" className="contactSection"><div className="contactIntro"><p>Contact Qambranis</p><h2>Let’s create<br/>something beautiful.</h2><div className="contactQuick"><a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer"><Icon name="whatsapp"/> WhatsApp</a><a href="https://www.instagram.com/qambranisofficial" target="_blank" rel="noreferrer"><Icon name="instagram"/> Instagram</a><a href="https://www.tiktok.com/@qambranisofficial" target="_blank" rel="noreferrer"><Icon name="tiktok"/> TikTok</a><a href="https://www.facebook.com/qambranisofficial" target="_blank" rel="noreferrer"><Icon name="facebook"/> Facebook</a><a href={`mailto:${EMAIL}`}><Icon name="email"/> {EMAIL}</a></div></div><form className="contactForm" onSubmit={e=>{e.preventDefault();window.location.href=`mailto:${EMAIL}?subject=${encodeURIComponent('Qambranis enquiry')}&body=${encodeURIComponent(e.currentTarget.message.value)}`}}><label>Your name<input name="name" required/></label><label>Email<input name="email" type="email" required/></label><label>Message<textarea name="message" rows="5" required/></label><button className="darkButton">Send enquiry</button></form></section>
 
-    <footer><div className="footMark"><div className="wordmark">QAMBRANIS<span>Empowering Women</span></div><p>Handmade cultural dupattas from interior Sindh.</p></div><div className="footerLinks"><a href="#collection">Collection</a><a href="#story">Story</a><a href="#delivery">Delivery</a><a href="#contact">Contact</a><a href="/shipping">Shipping</a><a href="/returns">Returns</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookie-policy">Cookies</a></div><small>© 2026 Qambranis. Online only. Pakistan.</small><small className="right">PKR 15,000 · Pakistan delivery included</small></footer>
+    <footer><div className="footMark"><div className="wordmark">QAMBRANIS<span>Empowering Women</span></div><p>Handmade cultural dupattas from interior Sindh.</p><div className="footerSocial"><a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer">WhatsApp</a><a href="https://www.instagram.com/qambranisofficial" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.tiktok.com/@qambranisofficial" target="_blank" rel="noreferrer">TikTok</a></div></div><div className="footerLinks"><a href="#collection">Collection</a><a href="#story">Story</a><a href="#delivery">Delivery</a><a href="#contact">Contact</a><a href="/shipping">Shipping</a><a href="/returns">Returns</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookie-policy">Cookies</a></div><small>© 2026 Qambranis. Online only. Pakistan.</small><small className="right">PKR 15,000 · Pakistan delivery included</small></footer>
 
     <a className="whatsappFloat" href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer" aria-label="WhatsApp"><Icon name="whatsapp"/><span>WhatsApp</span></a>
 

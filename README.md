@@ -1,15 +1,12 @@
-# Qambranis Release 2.1
+# Qambranis
 
-Launch-ready Next.js storefront for Qambranis.
+Premium handmade cultural dupattas crafted by women artisans in interior Sindh.
 
-## Included
-- Luxury image-led storefront
-- Search, filters, product galleries and bag
-- WhatsApp checkout request
-- Payment and delivery information
-- Contact and social links
-- Privacy, terms, shipping, returns and cookie pages
-- Sitemap, robots, structured data, favicon and 404 page
+## Release 2.2
 
-## Deploy
-Upload the extracted project contents to the GitHub repository. Vercel will redeploy from `main`.
+- Refined hero framing and cinematic motion
+- Smaller, denser product presentation
+- Six-piece featured collection with full collection toggle
+- Improved product hierarchy and actions
+- Refined editorial imagery, footer, mobile layout and reduced-motion support
+- Production build verified with Next.js 15.5.20
