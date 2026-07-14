@@ -1,14 +1,15 @@
-# Qambranis Release 2.0
-Luxury, image-led commerce experience for handmade cultural dupattas.
+# Qambranis Release 2.1
+
+Launch-ready Next.js storefront for Qambranis.
 
 ## Included
-- Search and colour filters
-- Product detail gallery
-- Shopping bag and quantity controls
-- Checkout/order request flow
-- Bank transfer, JazzCash, Easypaisa and card-payment enquiry options
-- WhatsApp order handoff
-- Contact form and social links
-- Responsive mobile design
+- Luxury image-led storefront
+- Search, filters, product galleries and bag
+- WhatsApp checkout request
+- Payment and delivery information
+- Contact and social links
+- Privacy, terms, shipping, returns and cookie pages
+- Sitemap, robots, structured data, favicon and 404 page
 
-No payment is collected directly by this release. Orders are sent to Qambranis on WhatsApp for stock, shipping and payment confirmation.
+## Deploy
+Upload the extracted project contents to the GitHub repository. Vercel will redeploy from `main`.
