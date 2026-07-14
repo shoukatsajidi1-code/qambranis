@@ -3,162 +3,135 @@ import Image from 'next/image';
 import { useMemo, useState } from 'react';
 
 const products = [
-  { name:'Desert Gold', slug:'yellow', tone:'Yellow · Black' },
-  { name:'Royal Indigo', slug:'blue-red', tone:'Blue · Red' },
-  { name:'Crimson Grove', slug:'green-red', tone:'Green · Red' },
-  { name:'Ivory Noir', slug:'white-black', tone:'Ivory · Black' },
-  { name:'Midnight Garden', slug:'black-colour', tone:'Black · Multicolour' },
-  { name:'Violet Flame', slug:'violet-orange', tone:'Violet · Orange' },
-  { name:'Rose Dune', slug:'beige-magenta', tone:'Beige · Magenta' },
-  { name:'Mint Amethyst', slug:'mint-violet', tone:'Mint · Violet' },
-  { name:'Lavender Emerald', slug:'lavender-emerald', tone:'Lavender · Green' },
-  { name:'Peach Amethyst', slug:'peach-purple', tone:'Peach · Purple' },
-  { name:'Royal Saffron', slug:'purple-gold', tone:'Purple · Gold' },
-  { name:'Festival Ivory', slug:'white-colour', tone:'Ivory · Multicolour' }
+  { name:'Desert Gold', slug:'yellow', tone:'Yellow · Black', images:4 },
+  { name:'Royal Indigo', slug:'blue-red', tone:'Blue · Red', images:3 },
+  { name:'Crimson Grove', slug:'green-red', tone:'Green · Red', images:4 },
+  { name:'Ivory Noir', slug:'white-black', tone:'Ivory · Black', images:3 },
+  { name:'Midnight Garden', slug:'black-colour', tone:'Black · Multicolour', images:4 },
+  { name:'Violet Flame', slug:'violet-orange', tone:'Violet · Orange', images:2 },
+  { name:'Rose Dune', slug:'beige-magenta', tone:'Beige · Magenta', images:2 },
+  { name:'Mint Amethyst', slug:'mint-violet', tone:'Mint · Violet', images:2 },
+  { name:'Lavender Emerald', slug:'lavender-emerald', tone:'Lavender · Green', images:1 },
+  { name:'Peach Amethyst', slug:'peach-purple', tone:'Peach · Purple', images:2 },
+  { name:'Royal Saffron', slug:'purple-gold', tone:'Purple · Gold', images:3 },
+  { name:'Festival Ivory', slug:'white-colour', tone:'Ivory · Multicolour', images:4 }
 ];
 
-const WHATSAPP = '923363377447';
-const EMAIL = 'info@qambranis.com';
+const WHATSAPP='923363377447';
+const EMAIL='info@qambranis.com';
+const PRICE=15000;
 
-function Icon({ name }) {
-  const paths = {
-    whatsapp: <><path d="M20.5 3.5A10 10 0 0 0 4.8 15.6L3.5 20.5l5-1.3A10 10 0 1 0 20.5 3.5Z"/><path d="M8.2 7.7c.2-.5.4-.5.7-.5h.5c.2 0 .4.1.5.4l.8 2c.1.3 0 .5-.1.7l-.6.8c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.7.2.1.4.1.6-.1l.9-1.1c.2-.2.4-.3.7-.2l1.9.9c.3.1.4.3.4.5 0 .5-.2 1.6-1 2.2-.7.6-1.7.9-2.8.5-1.2-.4-2.7-1-4.4-2.5-1.4-1.3-2.4-2.9-2.8-4.1-.4-1.2 0-2.2.4-2.8.4-.5.9-.7 1.5-.7Z"/></>,
-    instagram: <><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.2" cy="6.8" r=".8" fill="currentColor" stroke="none"/></>,
-    facebook: <path d="M13.5 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.5 1.6-1.5h1.7V4a22 22 0 0 0-2.5-.1c-2.5 0-4.2 1.5-4.2 4.3V10H7.3v3h2.8v8h3.4Z" fill="currentColor" stroke="none"/>,
-    tiktok: <path d="M14 4v10.3a3.2 3.2 0 1 1-2.4-3.1V8.1a6.3 6.3 0 1 0 5.5 6.2V9.1c1.1.8 2.4 1.3 3.9 1.3V7.2c-2.2 0-4-1.4-4.6-3.2H14Z" fill="currentColor" stroke="none"/>,
-    email: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></>
+function Icon({name}){
+  const p={
+    bag:<><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></>,
+    search:<><circle cx="11" cy="11" r="6"/><path d="m16 16 5 5"/></>,
+    whatsapp:<><path d="M20.5 3.5A10 10 0 0 0 4.8 15.6L3.5 20.5l5-1.3A10 10 0 1 0 20.5 3.5Z"/><path d="M8.2 7.7c.2-.5.4-.5.7-.5h.5c.2 0 .4.1.5.4l.8 2c.1.3 0 .5-.1.7l-.6.8c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.7.2.1.4.1.6-.1l.9-1.1c.2-.2.4-.3.7-.2l1.9.9c.3.1.4.3.4.5 0 .5-.2 1.6-1 2.2-.7.6-1.7.9-2.8.5-1.2-.4-2.7-1-4.4-2.5-1.4-1.3-2.4-2.9-2.8-4.1-.4-1.2 0-2.2.4-2.8.4-.5.9-.7 1.5-.7Z"/></>,
+    instagram:<><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.2" cy="6.8" r=".8" fill="currentColor" stroke="none"/></>,
+    facebook:<path d="M13.5 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.5 1.6-1.5h1.7V4a22 22 0 0 0-2.5-.1c-2.5 0-4.2 1.5-4.2 4.3V10H7.3v3h2.8v8h3.4Z" fill="currentColor" stroke="none"/>,
+    tiktok:<path d="M14 4v10.3a3.2 3.2 0 1 1-2.4-3.1V8.1a6.3 6.3 0 1 0 5.5 6.2V9.1c1.1.8 2.4 1.3 3.9 1.3V7.2c-2.2 0-4-1.4-4.6-3.2H14Z" fill="currentColor" stroke="none"/>,
+    email:<><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></>
   };
-  return <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{paths[name]}</svg>;
+  return <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{p[name]}</svg>
 }
 
-function OrderLink({ product, className='' }) {
-  const text = encodeURIComponent(`Hello Qambranis, I would like to order ${product || 'a handmade dupatta'} for PKR 15,000. Please confirm availability.`);
-  return <a className={className} href={`https://wa.me/${WHATSAPP}?text=${text}`} target="_blank" rel="noreferrer">Order on WhatsApp</a>;
-}
+function money(n){return `PKR ${n.toLocaleString('en-PK')}`}
 
-export default function Home() {
-  const [menu, setMenu] = useState(false);
-  const [selected, setSelected] = useState(null);
-  const [filter, setFilter] = useState('All');
-  const [form, setForm] = useState({name:'', email:'', message:''});
-  const shown = useMemo(() => filter === 'All' ? products : products.filter(p => p.tone.toLowerCase().includes(filter.toLowerCase())), [filter]);
+export default function Home(){
+  const [menu,setMenu]=useState(false);
+  const [filter,setFilter]=useState('All');
+  const [query,setQuery]=useState('');
+  const [selected,setSelected]=useState(null);
+  const [activeImage,setActiveImage]=useState(1);
+  const [cart,setCart]=useState([]);
+  const [cartOpen,setCartOpen]=useState(false);
+  const [checkout,setCheckout]=useState(false);
+  const [payment,setPayment]=useState('Bank Transfer');
+  const [form,setForm]=useState({name:'',email:'',phone:'',country:'Pakistan',address:'',note:''});
 
-  function sendEmail(e) {
-    e.preventDefault();
-    const subject = encodeURIComponent(`Qambranis enquiry from ${form.name || 'customer'}`);
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+  const shown=useMemo(()=>products.filter(p=>{
+    const f=filter==='All'||p.tone.toLowerCase().includes(filter.toLowerCase());
+    const q=(p.name+' '+p.tone).toLowerCase().includes(query.toLowerCase());
+    return f&&q;
+  }),[filter,query]);
+  const total=cart.reduce((s,x)=>s+x.qty*PRICE,0);
+  const count=cart.reduce((s,x)=>s+x.qty,0);
+
+  function add(p){
+    setCart(c=>{const hit=c.find(x=>x.slug===p.slug);return hit?c.map(x=>x.slug===p.slug?{...x,qty:x.qty+1}:x):[...c,{...p,qty:1}]});
+    setCartOpen(true);
+  }
+  function qty(slug,d){setCart(c=>c.map(x=>x.slug===slug?{...x,qty:Math.max(0,x.qty+d)}:x).filter(x=>x.qty>0))}
+  function orderText(){
+    const items=cart.map(x=>`${x.qty} × ${x.name} — ${money(x.qty*PRICE)}`).join('\n');
+    return encodeURIComponent(`Hello Qambranis, I would like to place this order:\n\n${items}\n\nTotal: ${money(total)}\nPayment: ${payment}\n\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nCountry: ${form.country}\nAddress: ${form.address}\nNote: ${form.note}\n\nPlease confirm availability and payment instructions.`);
   }
 
   return <main>
     <header className="nav">
-      <a href="#top" className="wordmark">QAMBRANIS<span>Empowering Women</span></a>
-      <button className="menuButton" aria-label="Open menu" onClick={() => setMenu(!menu)}>☰</button>
-      <nav className={menu ? 'open' : ''}>
+      <a className="wordmark" href="#top">QAMBRANIS<span>Empowering Women</span></a>
+      <nav className={menu?'open':''}>
         <a href="#collection" onClick={()=>setMenu(false)}>Collection</a>
-        <a href="#story" onClick={()=>setMenu(false)}>Our Story</a>
         <a href="#craft" onClick={()=>setMenu(false)}>Craft</a>
+        <a href="#story" onClick={()=>setMenu(false)}>Our Story</a>
+        <a href="#delivery" onClick={()=>setMenu(false)}>Delivery</a>
         <a href="#contact" onClick={()=>setMenu(false)}>Contact</a>
       </nav>
+      <div className="navTools">
+        <button className="iconBtn" onClick={()=>document.getElementById('search')?.focus()} aria-label="Search"><Icon name="search"/></button>
+        <button className="bagBtn" onClick={()=>setCartOpen(true)} aria-label="Shopping bag"><Icon name="bag"/><span>{count}</span></button>
+        <button className="menuButton" onClick={()=>setMenu(!menu)} aria-label="Menu">☰</button>
+      </div>
     </header>
 
-    <aside className="socialDock" aria-label="Qambranis social links">
-      <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer" aria-label="WhatsApp"><Icon name="whatsapp"/></a>
-      <a href="https://www.instagram.com/qambranisofficial" target="_blank" rel="noreferrer" aria-label="Instagram"><Icon name="instagram"/></a>
-      <a href="https://www.tiktok.com/@qambranisofficial" target="_blank" rel="noreferrer" aria-label="TikTok"><Icon name="tiktok"/></a>
-      <a href="https://www.facebook.com/qambranisofficial" target="_blank" rel="noreferrer" aria-label="Facebook"><Icon name="facebook"/></a>
-      <a href={`mailto:${EMAIL}`} aria-label="Email"><Icon name="email"/></a>
-    </aside>
-
-    <a className="whatsappFloat" href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer" aria-label="Chat with Qambranis on WhatsApp"><Icon name="whatsapp"/><span>WhatsApp</span></a>
-
     <section id="top" className="hero">
-      <Image src="/images/hero.jpg" alt="Model wearing a handcrafted yellow Qambranis dupatta" fill priority sizes="100vw" className="cover" />
-      <div className="shade" />
-      <div className="heroCopy brandHero">
-        <p>Handmade in Interior Sindh</p>
-        <h1>QAMBRANIS</h1>
-        <h2>Wear the story.</h2>
-        <div className="heroActions"><a href="#collection" className="lightButton">Explore Collection</a><OrderLink className="textLink" /></div>
-      </div>
+      <Image src="/images/hero.jpg" alt="Qambranis model wearing a handcrafted dupatta" fill priority sizes="100vw" className="cover heroImage"/>
+      <div className="shade"/>
+      <div className="heroCopy brandHero"><p>Handmade in Interior Sindh</p><h1>QAMBRANIS</h1><h2>Wear the story.</h2><a href="#collection" className="lightButton">Explore Collection</a></div>
       <div className="scroll">Scroll</div>
     </section>
 
-    <section className="manifesto">
-      <p>50+ women artisans</p>
-      <h2>Qambranis.<br/>Made with purpose.</h2>
+    <section className="trustBar">
+      <div><b>Handmade</b><span>Never mass produced</span></div>
+      <div><b>50+ Artisans</b><span>Fairly paid</span></div>
+      <div><b>Worldwide</b><span>Up to 30 days</span></div>
+      <div><b>Secure Options</b><span>Cards · Bank · Wallets</span></div>
     </section>
 
     <section id="collection" className="collection sectionPad">
-      <div className="sectionHead"><div><p>Qambranis Collection</p><h2>Every piece.<br/>One of a kind.</h2></div><strong>PKR 15,000</strong></div>
-      <div className="chips">
-        {['All','Black','Blue','Green','Ivory','Purple'].map(x=><button key={x} className={filter===x?'active':''} onClick={()=>setFilter(x)}>{x}</button>)}
+      <div className="sectionHead"><div><p>The Collection</p><h2>Made by hand.<br/>Chosen by you.</h2></div><strong>PKR 15,000</strong></div>
+      <div className="shopTools">
+        <div className="searchBox"><Icon name="search"/><input id="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search collection"/></div>
+        <div className="chips">{['All','Black','Blue','Green','Ivory','Purple'].map(x=><button key={x} className={filter===x?'active':''} onClick={()=>setFilter(x)}>{x}</button>)}</div>
       </div>
       <div className="grid">
-        {shown.map((p)=><article key={p.slug} className="card" onClick={()=>setSelected(p)}>
-          <div className="imageWrap"><Image src={`/images/products/${p.slug}-1.webp`} alt={`${p.name} handcrafted dupatta`} fill sizes="(max-width: 720px) 100vw, 50vw" className="cover" /></div>
-          <div className="cardText"><div><h3>{p.name}</h3><p>{p.tone}</p></div><span>PKR 15,000</span></div>
+        {shown.map(p=><article key={p.slug} className="card">
+          <button className="imageWrap" onClick={()=>{setSelected(p);setActiveImage(1)}}><Image src={`/images/products/${p.slug}-1.webp`} alt={p.name} fill sizes="(max-width:760px) 100vw,50vw" className="cover"/></button>
+          <div className="cardText"><div><h3>{p.name}</h3><p>{p.tone}</p></div><span>{money(PRICE)}</span></div>
+          <div className="cardActions"><button onClick={()=>{setSelected(p);setActiveImage(1)}}>View details</button><button onClick={()=>add(p)}>Add to bag</button></div>
         </article>)}
       </div>
     </section>
 
-    <section id="craft" className="split">
-      <div className="craftImage"><Image src="/images/craft.jpg" alt="Artisan hand embroidering fabric" fill sizes="(max-width: 900px) 100vw, 50vw" className="cover" /></div>
-      <div className="splitText"><p>Qambranis Craft</p><h2>Made by hand.<br/>Known by name.</h2><ul><li>100% handmade</li><li>50+ women artisans</li><li>Custom orders</li><li>Worldwide delivery</li></ul></div>
-    </section>
+    <section id="craft" className="split"><div className="craftImage"><Image src="/images/craft.jpg" alt="Hand embroidery by a Qambranis artisan" fill sizes="(max-width:900px) 100vw,60vw" className="cover"/></div><div className="splitText"><p>Our Craft</p><h2>Every stitch<br/>placed by hand.</h2><ul><li>Interior Sindh</li><li>Traditional embroidery</li><li>Customisation available</li><li>No mass production</li></ul></div></section>
 
-    <section id="story" className="story sectionPad">
-      <p>The Qambranis Story</p>
-      <h2>From a café idea<br/>to a cultural platform.</h2>
-      <div className="storyFacts"><span>50+ Artisans</span><span>Interior Sindh</span><span>Fairly Paid</span></div>
-    </section>
+    <section id="story" className="story sectionPad"><p>Qambranis Story</p><h2>Friends. A purpose.<br/>A platform for craft.</h2><div className="storyFacts"><span>50+ Women</span><span>Kashmore</span><span>Kandhkot</span><span>Ghauspur</span><span>Tangwani</span></div></section>
 
-    <section className="editorial">
-      {[1,2,3,4].map((n)=><div className="editorialImg" key={n}><Image src={`/images/editorial/model-${n}.jpeg`} alt="Qambranis editorial" fill sizes="(max-width: 720px) 100vw, 50vw" className="cover" /></div>)}
-    </section>
+    <section className="editorial">{[1,2,3,4].map(i=><div className="editorialImg" key={i}><Image src={`/images/editorial/model-${i}.jpeg`} alt="Qambranis editorial" fill sizes="(max-width:760px) 100vw,50vw" className="cover"/></div>)}</section>
 
-    <section className="delivery sectionPad">
-      <div><p>Pakistan</p><h3>Delivery included</h3><span>Within 7 days</span></div>
-      <div><p>Worldwide</p><h3>Delivered globally</h3><span>Within 30 days</span></div>
-      <div><p>Made for you</p><h3>Custom available</h3><span>By request</span></div>
-    </section>
+    <section className="payments sectionPad"><p>Payment Options</p><h2>Choose what works.</h2><div className="paymentGrid"><span>Visa</span><span>Mastercard</span><span>Bank Transfer</span><span>JazzCash</span><span>Easypaisa</span></div><small>Card checkout will activate once the payment gateway is approved. Bank and wallet orders are confirmed directly by Qambranis.</small></section>
 
-    <section id="contact" className="contactSection">
-      <div className="contactIntro"><p>Contact Qambranis</p><h2>Choose your piece.</h2><div className="contactQuick"><a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer"><Icon name="whatsapp"/>+92 336 3377447</a><a href={`mailto:${EMAIL}`}><Icon name="email"/>{EMAIL}</a></div></div>
-      <form className="contactForm" onSubmit={sendEmail}>
-        <label>Name<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Your name"/></label>
-        <label>Email<input required type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} placeholder="you@example.com"/></label>
-        <label>Message<textarea required rows="5" value={form.message} onChange={e=>setForm({...form,message:e.target.value})} placeholder="Product, colour or custom request"/></label>
-        <button className="darkButton" type="submit">Send enquiry</button>
-        <small>Opens your email app addressed to {EMAIL}</small>
-      </form>
-    </section>
+    <section id="delivery" className="delivery"><div><p>Pakistan</p><h3>Within 7 Days</h3><span>Delivery included in PKR 15,000</span></div><div><p>Worldwide</p><h3>Within 30 Days</h3><span>Shipping quoted before payment</span></div><div><p>Custom Orders</p><h3>Made for You</h3><span>Discuss colour and design on WhatsApp</span></div></section>
 
-    <section className="cta">
-      <p>Qambranis</p>
-      <h2>Wear the story.</h2>
-      <OrderLink className="lightButton" />
-    </section>
+    <section id="contact" className="contactSection"><div className="contactIntro"><p>Contact Qambranis</p><h2>Let’s create<br/>something beautiful.</h2><div className="contactQuick"><a href={`https://wa.me/${WHATSAPP}`} target="_blank"><Icon name="whatsapp"/> WhatsApp</a><a href="https://www.instagram.com/qambranisofficial" target="_blank"><Icon name="instagram"/> Instagram</a><a href="https://www.tiktok.com/@qambranisofficial" target="_blank"><Icon name="tiktok"/> TikTok</a><a href="https://www.facebook.com/qambranisofficial" target="_blank"><Icon name="facebook"/> Facebook</a><a href={`mailto:${EMAIL}`}><Icon name="email"/> {EMAIL}</a></div></div><form className="contactForm" onSubmit={e=>{e.preventDefault();window.location.href=`mailto:${EMAIL}?subject=${encodeURIComponent('Qambranis enquiry')}&body=${encodeURIComponent(e.currentTarget.message.value)}`}}><label>Your name<input name="name" required/></label><label>Email<input name="email" type="email" required/></label><label>Message<textarea name="message" rows="5" required/></label><button className="darkButton">Send enquiry</button></form></section>
 
-    <footer>
-      <div className="wordmark footMark">QAMBRANIS<span>Empowering Women</span></div>
-      <div className="footerLinks">
-        <a href={`mailto:${EMAIL}`}>Email</a>
-        <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer">WhatsApp</a>
-        <a href="https://www.instagram.com/qambranisofficial" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://www.facebook.com/qambranisofficial" target="_blank" rel="noreferrer">Facebook</a>
-        <a href="https://www.tiktok.com/@qambranisofficial" target="_blank" rel="noreferrer">TikTok</a>
-      </div>
-      <p>{EMAIL}<br/>+92 336 3377447<br/>Online only · Pakistan · Worldwide delivery</p>
-      <small>© {new Date().getFullYear()} Qambranis</small>
-    </footer>
+    <footer><div className="footMark"><div className="wordmark">QAMBRANIS<span>Empowering Women</span></div><p>Handmade cultural dupattas from interior Sindh.</p></div><div className="footerLinks"><a href="#collection">Collection</a><a href="#story">Story</a><a href="#delivery">Delivery</a><a href="#contact">Contact</a><a href={`mailto:${EMAIL}`}>Email</a></div><small>© 2026 Qambranis. Online only. Pakistan.</small><small className="right">PKR 15,000 · Pakistan delivery included</small></footer>
 
-    {selected && <div className="modal" role="dialog" aria-modal="true" onClick={()=>setSelected(null)}>
-      <div className="modalBody" onClick={e=>e.stopPropagation()}>
-        <button className="close" onClick={()=>setSelected(null)}>×</button>
-        <div className="modalImage"><Image src={`/images/products/${selected.slug}-1.webp`} alt={selected.name} fill sizes="100vw" className="cover" /></div>
-        <div className="modalText"><p>Qambranis · {selected.tone}</p><h2>{selected.name}</h2><strong>PKR 15,000</strong><ul><li>Handmade</li><li>Pakistan delivery included</li><li>Customisation available</li></ul><OrderLink product={selected.name} className="darkButton" /></div>
-      </div>
-    </div>}
-  </main>;
+    <a className="whatsappFloat" href={`https://wa.me/${WHATSAPP}`} target="_blank" aria-label="WhatsApp"><Icon name="whatsapp"/><span>WhatsApp</span></a>
+
+    {selected&&<div className="modal" onMouseDown={e=>{if(e.target===e.currentTarget)setSelected(null)}}><div className="productModal"><button className="close" onClick={()=>setSelected(null)}>×</button><div className="productGallery"><div className="modalImage"><Image src={`/images/products/${selected.slug}-${activeImage}.webp`} alt={selected.name} fill sizes="(max-width:800px) 100vw,60vw" className="cover"/></div><div className="thumbs">{Array.from({length:selected.images},(_,i)=>i+1).map(i=><button key={i} className={activeImage===i?'active':''} onClick={()=>setActiveImage(i)}><Image src={`/images/products/${selected.slug}-${i}.webp`} alt="" fill sizes="80px" className="cover"/></button>)}</div></div><div className="modalText"><p>Qambranis · {selected.tone}</p><h2>{selected.name}</h2><strong>{money(PRICE)}</strong><ul><li>100% handmade</li><li>Pakistan delivery included</li><li>Customisation available</li><li>Worldwide delivery available</li></ul><button className="darkButton" onClick={()=>add(selected)}>Add to bag</button><a className="outlineButton" target="_blank" href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Hello Qambranis, I am interested in ${selected.name}.`)}`}>Ask on WhatsApp</a></div></div></div>}
+
+    {cartOpen&&<div className="drawerShade" onMouseDown={e=>{if(e.target===e.currentTarget)setCartOpen(false)}}><aside className="cartDrawer"><div className="drawerHead"><h2>Your Bag</h2><button onClick={()=>setCartOpen(false)}>×</button></div>{cart.length===0?<div className="empty"><p>Your bag is empty.</p><button className="darkButton" onClick={()=>setCartOpen(false)}>Explore collection</button></div>:<><div className="cartItems">{cart.map(x=><div className="cartItem" key={x.slug}><div className="cartThumb"><Image src={`/images/products/${x.slug}-1.webp`} alt={x.name} fill sizes="90px" className="cover"/></div><div><h3>{x.name}</h3><p>{money(PRICE)}</p><div className="qty"><button onClick={()=>qty(x.slug,-1)}>−</button><span>{x.qty}</span><button onClick={()=>qty(x.slug,1)}>+</button></div></div></div>)}</div><div className="cartTotal"><span>Total</span><strong>{money(total)}</strong></div><button className="darkButton full" onClick={()=>{setCheckout(true);setCartOpen(false)}}>Checkout</button></>}</aside></div>}
+
+    {checkout&&<div className="modal"><div className="checkout"><button className="close" onClick={()=>setCheckout(false)}>×</button><div><p>Secure order request</p><h2>Checkout</h2><div className="orderSummary">{cart.map(x=><span key={x.slug}>{x.qty} × {x.name}</span>)}<strong>{money(total)}</strong></div></div><form onSubmit={e=>{e.preventDefault();window.open(`https://wa.me/${WHATSAPP}?text=${orderText()}`,'_blank')}}><div className="formGrid"><label>Name<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})}/></label><label>Email<input required type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})}/></label><label>Phone<input required value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})}/></label><label>Country<input required value={form.country} onChange={e=>setForm({...form,country:e.target.value})}/></label></div><label>Delivery address<textarea required rows="3" value={form.address} onChange={e=>setForm({...form,address:e.target.value})}/></label><label>Order note<textarea rows="2" value={form.note} onChange={e=>setForm({...form,note:e.target.value})}/></label><fieldset><legend>Payment method</legend>{['Bank Transfer','JazzCash','Easypaisa','Card Payment (confirmation required)'].map(x=><label className="radio" key={x}><input type="radio" name="payment" checked={payment===x} onChange={()=>setPayment(x)}/>{x}</label>)}</fieldset><button className="darkButton full">Send order to WhatsApp</button><small>No payment is taken on this page. Qambranis will confirm stock, international shipping and payment instructions.</small></form></div></div>}
+  </main>
 }
