@@ -39,3 +39,7 @@ html{scroll-behavior:smooth}.nav{backdrop-filter:blur(12px);-webkit-backdrop-fil
 .paymentGrid>span{padding:22px 10px}
 .heroImage{animation:none!important;object-position:56% 31%;filter:none}
 @media(max-width:760px){.heroImage{object-position:57% 27%}.logoPayment{min-width:84px}.jazzPayment img{max-width:105px}.easyPayment img{max-width:50px}}
+
+/* Release 2.5 — logo integration, real contact form and trust polish */
+.brandLogo{display:flex;align-items:center;width:118px;height:72px;overflow:hidden}.brandLogo img{width:118px;height:auto;filter:brightness(0) invert(1);object-fit:contain}.footerLogo{display:inline-flex;width:170px;max-width:100%}.footerLogo img{width:100%;height:auto;object-fit:contain}.contactForm button:disabled{cursor:wait;opacity:.62}.formStatus{min-height:22px;margin-top:13px;font-size:12px;line-height:1.55}.formStatus.success{color:#27633b}.formStatus.error{color:#9b2f2f}.privacyHint{display:block;margin-top:12px;line-height:1.6;opacity:.7}.privacyHint a{text-decoration:underline;text-underline-offset:3px}.optional{font-weight:400;opacity:.55}.honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}.policyLogo{display:flex;width:128px;height:74px;overflow:hidden}.policyLogo img{width:128px;height:auto;object-fit:contain}.policyBody a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){.brandLogo{width:91px;height:62px}.brandLogo img{width:91px}.footerLogo{width:145px}.policyLogo{width:105px;height:66px}.policyLogo img{width:105px}}

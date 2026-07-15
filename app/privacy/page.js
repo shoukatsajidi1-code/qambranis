@@ -1,10 +1,15 @@
 import PolicyPage from '../PolicyPage';
-export const metadata={title:'Privacy Policy — Qambranis'};
-export default function Page(){return <PolicyPage eyebrow="Your information" title="Privacy Policy">
-<h2>What we collect</h2><p>We may collect your name, email address, telephone number, delivery address, order details and messages when you contact us or submit an order request.</p>
-<h2>How we use it</h2><ul><li>To answer enquiries and confirm orders.</li><li>To arrange payment and delivery.</li><li>To prevent fraud and maintain business records.</li><li>To improve our website and customer service.</li></ul>
-<h2>Payments</h2><p>This website does not currently process card payments directly. Payment instructions are confirmed by Qambranis. Do not send card details through WhatsApp, email or the contact form.</p>
-<h2>Sharing</h2><p>We share information only where needed to fulfil an order, such as with delivery providers, payment providers or professional advisers, or where required by law.</p>
-<h2>Retention and security</h2><p>We keep information only for as long as reasonably necessary for customer service, accounting and legal purposes. No internet service is completely risk-free, so customers should avoid sending unnecessary sensitive information.</p>
-<h2>Your choices</h2><p>You may ask us to correct or delete information, subject to legal and record-keeping obligations.</p>
+export const metadata={title:'Privacy & Data Policy — Qambranis'};
+export default function Page(){return <PolicyPage eyebrow="Your information" title="Privacy & Data Policy">
+<p><strong>Last updated: 15 July 2026.</strong></p>
+<h2>Who controls your information</h2><p>Qambranis is an online business operating from Pakistan. Privacy questions and requests may be sent to <a href="mailto:info@qambranis.com">info@qambranis.com</a>.</p>
+<h2>Information we collect</h2><p>We may collect your name, email address, telephone number, delivery address, country, order and customisation details, payment confirmation information, correspondence and technical information needed to operate and secure the website.</p>
+<h2>How and why we use it</h2><ul><li>To respond to enquiries and take steps requested before an order.</li><li>To confirm, fulfil and deliver orders and provide customer support.</li><li>To maintain payment, accounting, fraud-prevention and legal records.</li><li>To protect the website and improve our service.</li><li>To send marketing only where permitted and with an available opt-out.</li></ul>
+<h2>Contact form and communications</h2><p>Contact-form messages are delivered through our email service provider. Messages may be stored by Qambranis and relevant service providers for customer service, security and record-keeping.</p>
+<h2>Payments</h2><p>The website does not currently collect full card details. Do not send card numbers, CVVs, PINs or passwords through WhatsApp, email or the contact form. Payment providers may process your information under their own privacy terms.</p>
+<h2>Sharing and international processing</h2><p>Information may be shared only where reasonably needed with hosting, email, payment, delivery, IT, accounting or professional service providers, or where required by law. Because Qambranis serves customers internationally, information may be processed outside your country, subject to available contractual and technical safeguards.</p>
+<h2>Retention and security</h2><p>We retain information only for as long as reasonably needed for enquiries, orders, accounting, disputes, fraud prevention and legal obligations. We use reasonable safeguards, but no internet service can guarantee absolute security.</p>
+<h2>Your rights and choices</h2><p>Depending on where you live, you may have rights to request access, correction, deletion, restriction, objection, portability or withdrawal of consent. These rights may be limited by legal, accounting or contractual obligations. You may also complain to your local data-protection authority.</p>
+<h2>Children</h2><p>The website is not intended to collect personal information directly from children. A parent or guardian should contact us where an order concerns a child.</p>
+<h2>Changes</h2><p>We may update this policy when our services or legal obligations change. The latest version will be published on this page.</p>
 </PolicyPage>}
