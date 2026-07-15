@@ -40,8 +40,8 @@ function PaymentMark({name}){
   if(name==='visa') return <span className="paymentMark visaMark" aria-label="Visa">VISA</span>;
   if(name==='mastercard') return <span className="paymentMark mastercardMark" aria-label="Mastercard"><i/><i/></span>;
   if(name==='bank') return <span className="paymentMark bankMark" aria-label="Bank transfer"><svg viewBox="0 0 40 28" aria-hidden="true"><path d="M4 10 20 3l16 7M7 12h26M9 12v10m7-10v10m8-10v10m7-10v10M5 24h30"/></svg></span>;
-  if(name==='jazzcash') return <span className="paymentMark walletMark jazzMark" aria-label="JazzCash"><b>J</b><em>JazzCash</em></span>;
-  return <span className="paymentMark walletMark easyMark" aria-label="Easypaisa"><b>e</b><em>easypaisa</em></span>;
+  if(name==='jazzcash') return <span className="paymentMark logoPayment jazzPayment" aria-label="JazzCash"><Image src="/images/brand/jazzcash.png" alt="JazzCash" width={150} height={92}/></span>;
+  return <span className="paymentMark logoPayment easyPayment" aria-label="Easypaisa"><Image src="/images/brand/easypaisa.png" alt="Easypaisa" width={72} height={72}/></span>;
 }
 
 export default function Home(){
@@ -95,7 +95,7 @@ export default function Home(){
     </header>
 
     <section id="top" className="hero">
-      <Image src="/images/hero.jpg" alt="Qambranis model wearing a handcrafted dupatta" fill priority sizes="100vw" className="cover heroImage"/>
+      <Image src="/images/hero-hq.jpg" alt="Qambranis model wearing a handcrafted dupatta" fill priority quality={100} sizes="100vw" className="cover heroImage"/>
       <div className="shade"/>
       <div className="heroCopy brandHero"><p>Handmade in Interior Sindh</p><h1>QAMBRANIS</h1><h2>Wear the story.</h2><a href="#collection" className="lightButton">Explore Collection</a></div>
       <div className="scroll">Scroll</div>
