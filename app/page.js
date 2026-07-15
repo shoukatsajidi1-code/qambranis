@@ -142,7 +142,7 @@ export default function Home(){
           <div className="cardActions"><Link className="primaryAction" href={`/products/${p.slug}`} onClick={()=>trackEvent('view_item',{currency:'PKR',value:PRICE,items:[{item_name:p.name,item_id:p.slug,price:PRICE}]})}>View product</Link><button onClick={()=>add(p)}>Add to bag</button></div>
         </article>)}
       </div>
-      {!query&&filter==='All'&&shown.length>6&&<div className="collectionMore"><button className="outlineButton" onClick={()=>setShowAll(!showAll)}>{showAll?'Show featured pieces':'View full collection'}</button><span>{showAll?'12 handcrafted pieces':'Showing 6 selected pieces'}</span></div>}
+      {!query&&filter==='All'&&shown.length>6&&<div className="collectionMore"><Link className="outlineButton" href="/collection">View full collection</Link><span>Explore all 12 handcrafted pieces</span></div>}
     </section>
 
     <section id="craft" className="split"><div className="craftImage"><Image src="/images/craft.jpg" alt="Hand embroidery by a Qambranis artisan" fill sizes="(max-width:900px) 100vw,60vw" className="cover"/></div><div className="splitText"><p>Our Craft</p><h2>Every stitch<br/>placed by hand.</h2><ul><li>Interior Sindh</li><li>Traditional embroidery</li><li>Customisation available</li><li>No mass production</li></ul></div></section>

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {getProduct, products, PRICE} from '../../../lib/products';
+import ProductActions from '../../components/ProductActions';
 import '../product.css';
 
 const BASE_URL = 'https://www.qambranis.com';
@@ -34,7 +35,6 @@ export default async function ProductPage({params}) {
   if (!product) notFound();
 
   const url = `${BASE_URL}/products/${product.slug}`;
-  const whatsappText = encodeURIComponent(`Hello Qambranis, I am interested in ${product.name} (${url}). Please confirm availability and payment instructions.`);
   const productSchema = {
     '@context':'https://schema.org',
     '@type':'Product',
@@ -88,7 +88,7 @@ export default async function ProductPage({params}) {
           <li>Customisation available</li>
           <li>Worldwide delivery available</li>
         </ul>
-        <a className="productPrimary" href={`https://wa.me/${WHATSAPP}?text=${whatsappText}`} target="_blank" rel="noreferrer">Order on WhatsApp</a>
+        <ProductActions name={product.name} url={url}/>
         <Link className="productSecondary" href="/#contact">Ask a question</Link>
         <small>No payment is taken on this page. Qambranis confirms availability and payment instructions directly.</small>
       </div>
@@ -97,6 +97,16 @@ export default async function ProductPage({params}) {
     {product.images > 1 && <section className="productGallery" aria-label={`${product.name} gallery`}>
       {Array.from({length:product.images-1},(_,index)=>index+2).map((imageNumber)=><div className="productGalleryImage" key={imageNumber}><Image src={`/images/products/${product.slug}-${imageNumber}.webp`} alt={`${product.name} detail ${imageNumber}`} fill sizes="(max-width: 760px) 100vw, 50vw"/></div>)}
     </section>}
+
+
+    <section className="productDetails">
+      <article><p>What makes it special</p><h2>Not manufactured.<br/>Made by hand.</h2></article>
+      <div><dl><div><dt>Origin</dt><dd>Interior Sindh, Pakistan</dd></div><div><dt>Craft</dt><dd>Traditional hand embroidery</dd></div><div><dt>Delivery</dt><dd>Pakistan within 7 days · Worldwide within 30 days</dd></div><div><dt>Customisation</dt><dd>Colours and design can be discussed before ordering</dd></div></dl></div>
+    </section>
+
+    <section className="relatedProducts">
+      <p>You may also like</p><div>{products.filter(item=>item.slug!==product.slug).slice(0,3).map(item=><Link href={`/products/${item.slug}`} key={item.slug}><span><Image src={`/images/products/${item.slug}-1.webp`} alt={`${item.name} handmade dupatta`} fill sizes="(max-width:760px) 100vw,33vw"/></span><h3>{item.name}</h3><small>{item.tone} · PKR {PRICE.toLocaleString('en-PK')}</small></Link>)}</div>
+    </section>
 
     <section className="productCraft">
       <p>Crafted by hand</p>
