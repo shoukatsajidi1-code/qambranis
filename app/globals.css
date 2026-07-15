@@ -67,3 +67,6 @@ html{scroll-behavior:smooth}.nav{backdrop-filter:blur(12px);-webkit-backdrop-fil
 .cookieActions{display:flex;gap:10px;flex:0 0 auto}
 .cookieActions button{white-space:nowrap}
 @media(max-width:720px){.cookieBanner{left:12px;right:12px;bottom:12px;display:block;padding:18px}.cookieActions{margin-top:14px}.cookieActions button{flex:1}}
+
+/* Release 2.8 — indexable product pages */
+.cardActions a{border:0;border-bottom:1px solid var(--ink);background:none;padding:4px 0;font-size:11px;text-transform:uppercase;letter-spacing:.1em}.cardActions a:hover{opacity:.62}.modalText>.outlineButton+ .outlineButton{margin-top:-6px}

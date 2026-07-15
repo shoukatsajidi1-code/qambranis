@@ -1,0 +1,1 @@
+export default function manifest(){return {name:'Qambranis',short_name:'Qambranis',description:'Handmade cultural dupattas crafted by women artisans in interior Sindh.',start_url:'/',display:'standalone',background_color:'#f4f0e7',theme_color:'#17140f',icons:[{src:'/icon.png',sizes:'any',type:'image/png'}]}}
