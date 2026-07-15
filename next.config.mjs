@@ -3,7 +3,9 @@ const nextConfig = {
   images: { formats: ['image/avif', 'image/webp'] },
   poweredByHeader: false,
   async headers() {
-    return [{
+    return [
+    { source: '/images/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] },
+    {
       source: '/(.*)',
       headers: [
         { key: 'X-Content-Type-Options', value: 'nosniff' },
@@ -12,7 +14,8 @@ const nextConfig = {
         { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
         { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains' }
       ]
-    }];
+    }
+    ];
   }
 };
 export default nextConfig;

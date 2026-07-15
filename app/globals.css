@@ -70,3 +70,15 @@ html{scroll-behavior:smooth}.nav{backdrop-filter:blur(12px);-webkit-backdrop-fil
 
 /* Release 2.8 — indexable product pages */
 .cardActions a{border:0;border-bottom:1px solid var(--ink);background:none;padding:4px 0;font-size:11px;text-transform:uppercase;letter-spacing:.1em}.cardActions a:hover{opacity:.62}.modalText>.outlineButton+ .outlineButton{margin-top:-6px}
+
+/* Release 2.9: compact, accessible FAQ */
+.faq{background:#f4efe7}
+.faqGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(31,26,22,.14);border:1px solid rgba(31,26,22,.14)}
+.faq details{background:#f4efe7;padding:1.35rem 1.5rem}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-size:1.25rem;font-weight:400}
+.faq details[open] summary::after{content:'−'}
+.faq details p{margin:.85rem 0 0;max-width:48ch;line-height:1.65;color:#625b53}
+.faq summary:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+@media(max-width:760px){.faqGrid{grid-template-columns:1fr}.faq details{padding:1.1rem 1rem}}
