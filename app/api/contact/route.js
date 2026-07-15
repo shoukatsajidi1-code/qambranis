@@ -7,6 +7,10 @@ function escapeHtml(value){return value.replace(/[&<>'"]/g,ch=>({'&':'&amp;','<'
 
 export async function POST(request){
   try{
+    const contentLength=Number(request.headers.get('content-length')||0);
+    if(contentLength>12000) return NextResponse.json({error:'Request is too large.'},{status:413});
+    const origin=request.headers.get('origin');
+    if(origin&&!['https://www.qambranis.com','https://qambranis.com'].includes(origin)) return NextResponse.json({error:'Request not allowed.'},{status:403});
     const body=await request.json();
     if(clean(body.website,200)) return NextResponse.json({ok:true});
     const name=clean(body.name,80);
@@ -18,7 +22,7 @@ export async function POST(request){
     }
     const apiKey=process.env.BREVO_API_KEY;
     const toEmail=process.env.CONTACT_TO_EMAIL||'info@qambranis.com';
-    const fromEmail=process.env.CONTACT_FROM_EMAIL||'website@qambranis.com';
+    const fromEmail=process.env.CONTACT_FROM_EMAIL||'info@qambranis.com';
     if(!apiKey){
       return NextResponse.json({error:'The contact service is being configured. Please contact us on WhatsApp.'},{status:503});
     }
