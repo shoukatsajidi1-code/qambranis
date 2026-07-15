@@ -1,4 +1,5 @@
 import './globals.css';
+import AnalyticsConsent from './components/AnalyticsConsent';
 
 export const metadata = {
   title: {default:'Qambranis — Handmade Cultural Dupattas',template:'%s | Qambranis'},
@@ -9,6 +10,7 @@ export const metadata = {
   twitter:{card:'summary_large_image',title:'Qambranis — Wear the Story',description:'Handmade cultural dupattas from interior Sindh.',images:['/images/qambranis-og.jpg']},
   robots:{index:true,follow:true},
   icons:{icon:'/icon.png'},
+  verification:{google:process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION||undefined},
 };
 
 const storeSchema={
@@ -25,4 +27,4 @@ const faqSchema={
     {'@type':'Question',name:'Can a Qambranis dupatta be customised?',acceptedAnswer:{'@type':'Answer',text:'Yes. Custom colours and design requirements can be discussed with Qambranis on WhatsApp.'}}
   ]
 };
-export default function RootLayout({children}){return <html lang="en"><body>{children}<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(storeSchema)}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/></body></html>}
+export default function RootLayout({children}){return <html lang="en"><body>{children}<AnalyticsConsent/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(storeSchema)}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/></body></html>}
